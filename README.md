@@ -37,7 +37,7 @@ Blender quit
 1. Drop heightmap SVG file in directory, run manually Blender rendering, show chocolate render offline
 1. Drop any image (logo (vector or raster), face, landscape, object), for logos (or low-color solid backgrounded images only) run auto-crop/center/rotate manually, generate heightmap generation manually, run manually Blender rendering, show chocolate render offline
 1. (current) Drop an image, run 1 command only for the last step, show chocolate render offline
-1. Same as before, but do a 3d rendering preview of multiple images on one circle path (ie. camera rotation only on the X-Y plan)
+1. Same as before, but do a 3d rendering preview of multiple images on one circle path (ie. camera rotation only on the X-Y plan) (see [CloudImage](https://github.com/scaleflex/js-cloudimage-360-view))
 1. In a different project:
     1. wrap this with an encrypted REST API,
     1. wrap this REST API with JS web form.
