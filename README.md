@@ -6,10 +6,12 @@ For now, the chocolate chip model is a "Petit écolier"-like chocolate biscuit. 
 - Inkscape is used to save a PNG heightmap from an SVG file.
 - Blender 2.79 + Micro-displacement + GPU optimizations (the aim is to provide fast previews to future web or offline users)
 - Tiny SH shell script - for Linux systems.
+- Tiny analogous Python shell script - for Linux systems.
 
 ## Usage
 Run `sh pix2chocolate.sh` (will use the LaBonneImpression logo).
 Or provide an image of any time as first parameter: `sh pix2chocolate.sh smiley.png`.
+(You can also use `python3 pix2chocolate.py` the same way).
 
 ## Example (Milestone 1)
 1. Create a PNG heightmap (eg. greyscale image) by hand
