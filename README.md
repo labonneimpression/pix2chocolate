@@ -43,6 +43,7 @@ Blender quit
 1. In a different project:
     1. wrap this with an encrypted REST API,
     1. wrap this REST API with JS web form.
+    1. generate and store 3d models for offline mold-making
 
 ## Installing
 Download everything (ie. the [master.zip archive of the main branch](https://github.com/labonneimpression/pix2chocolate/archive/master.zip)).
