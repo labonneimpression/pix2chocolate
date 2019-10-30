@@ -13,7 +13,7 @@ Or provide an image of any time as first parameter: `sh pix2chocolate.sh smiley.
 
 ## Example (Milestone 1)
 1. Create a PNG heightmap (eg. greyscale image) by hand
-![Image of Logo heightmap](https://github.com/labonneimpression/pix2chocolate/raw/master/LaBonneImpressionLogoHeightmap.png)
+![Image of Logo heightmap](https://github.com/labonneimpression/pix2chocolate/raw/master/LaBonneImpressionLogoHeightmapExample.png)
 1. Run the `pix2chocolate.sh LaBonneImpressionLogoHeightmap.svg` script and observe console output like
 ```
 ...
