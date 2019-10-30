@@ -9,7 +9,7 @@ For now, the chocolate chip model is a "Petit écolier"-like chocolate biscuit. 
 
 ## Example (Milestone 1)
 1. Create a PNG heightmap
-![Image of Logo heightmap](https://github.com/labonneimpression/pix2chocolate/raw/master/LaBonneImpressionLogoHeightmap.png =250x)
+![Image of Logo heightmap](https://github.com/labonneimpression/pix2chocolate/raw/master/LaBonneImpressionLogoHeightmap.png)
 1. Install Blender 2.79 if not there yet
 1. Run the `render_micro_displacement.sh` script and observe console output like
 ```
