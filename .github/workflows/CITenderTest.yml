@@ -24,9 +24,9 @@ jobs:
         sudo apt-get install -y blender
     - name: Attempt render
       run: |
-        blender -b micro_displacement_test.blend -noaudio -o ./test_ -E CYCLES -x 1 -f 1
+        python pix2chocolate.py
     - name: Upload image as artifact
       uses: actions/upload-artifact@v1
       with:
         name: your-chocolate.png
-        path: test_0001.png
+        path: test0001.png
