@@ -6,6 +6,9 @@ from .pix2chocolate import render_chocolate
 
 app = Flask(__name__)
 
+RENDERS_DIRECTORY = 'renders'
+DOWNLOADS_DIRECTORY = 'downloads'
+
 
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
@@ -14,15 +17,21 @@ def upload_file():
    elif request.method == 'POST':
        f = request.files['file']
        sec_filename = secure_filename(f.filename)
-       save_path = os.path.join(os.path.dirname(__file__), 'downloads', sec_filename)
+       save_path = os.path.join(os.path.dirname(__file__), DOWNLOADS_DIRECTORY, sec_filename)
        f.save(save_path)
-       rendered_image = secure_filename(render_chocolate(save_path))
-       return redirect(url_for('grab_render', requested_file=rendered_image))
+       renders_directory = os.path.join(os.path.dirname(__file__), RENDERS_DIRECTORY)
+       rendered_image = render_chocolate(save_path, renders_directory=renders_directory)
+       return redirect(url_for('grab_render', requested_file=os.path.basename(rendered_image)))
 
 @app.route('/grab-render', methods = ['GET'])
 def grab_render():
     requested_file = secure_filename(request.args.get('requested_file'))
-    return send_file(os.path.join('..', requested_file), mimetype='image/png', as_attachment=True)
+    return send_file(os.path.join(RENDERS_DIRECTORY, secure_filename(requested_file)), mimetype='image/png', as_attachment=True)
+
+@app.route('/show-render', methods = ['GET'])
+def show_render():
+    requested_file = secure_filename(request.args.get('requested_file'))
+    return render_template('show-render.html', render_filename=requested_file)
 
 def has_no_empty_params(rule):
     defaults = rule.defaults if rule.defaults is not None else ()

@@ -2,6 +2,7 @@ from filecmp import cmp
 from io import BytesIO
 import os
 import tempfile
+import urllib.parse as parse
 
 import PIL.Image
 
@@ -48,13 +49,10 @@ def test_file_upload(client):
                          data=data)
         uploaded_received_svg = os.path.join(DOWNLOADS_DIR, FILE_TO_SEND)
         # checking server-side stored file
-        print(os.path.realpath(os.getcwd()))
-        print(os.listdir('.'))
-        print(os.listdir(DOWNLOADS_DIR))
-        print(os.listdir(os.path.join(DOWNLOADS_DIR, '..')))
         assert cmp(FILE_TO_SEND, uploaded_received_svg)
         os.unlink(uploaded_received_svg)
 
+        # checking proper redirection for file download
         assert rv.status_code == 302
         redirected_url = rv.headers.get('location')
 
@@ -63,3 +61,10 @@ def test_file_upload(client):
         with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as received_data_file:
             received_data_file.write(rv.data)
             assert get_images_difference_percent(received_data_file.name, RENDER_FILE_TO_RECEIVE) < 20 
+
+        # checking proper page template with render image tag
+        parsed_query = parse.parse_qs(parse.urlparse(redirected_url).query)
+        assert 'requested_file' in parsed_query
+        requested_file = parsed_query['requested_file'][0]
+        rv = client.get('/show-render?requested_file=' + requested_file)
+        assert ('renders/' + requested_file) in rv.data.decode('utf-8')

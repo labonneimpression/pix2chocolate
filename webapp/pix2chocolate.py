@@ -6,13 +6,14 @@ import os
 import shutil
 import subprocess
 import sys
+import uuid
 
 
 DEFAULT_INPUT_IMAGE = 'LaBonneImpressionLogoHeightmap.svg'
 DEFAULT_DISPLACEMENT_TEXTURE_IMAGE = 'LaBonneImpressionLogoHeightmap.png' #todo more generic filename
 DEFAULT_RENDERING_IMAGE = 'test0001.png'
 
-def render_chocolate(image, headless=True):
+def render_chocolate(image, renders_directory='.', headless=True):
     logging.info(os.listdir('.'))
     if shutil.which("convert"):
         exitcode, output = subprocess.getstatusoutput('convert -rotate "90>" -background "#000000" -density 900 {input_file} {output_file}'.format(input_file=image, output_file=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE))
@@ -20,19 +21,24 @@ def render_chocolate(image, headless=True):
     else:
         print('No prior use of ImageMagick''s convert: process not found in path.')
     
+    render_filename_prefix = str(uuid.uuid1())
+    render_filename_full = '{}0001.png'.format(render_filename_prefix)
+    render_file_path_prefix = os.path.join(renders_directory, render_filename_prefix)
+    render_file_path_full = os.path.join(renders_directory, render_filename_full)
+
     if shutil.which("blender"):
         exitcode, output = subprocess.getstatusoutput(
-            'blender -b micro_displacement_test.blend -x 1 -o test -f 1')
+            'blender -b micro_displacement_test.blend -x 1 -o {} -f 1'.format(render_file_path_prefix))
         logging.info(output)
     else:
         print('FATAL ERROR: Blender not found!!!')
         sys.exit(1)
     
     if not headless and shutil.which("xdg-open"):
-        exitcode, output = subprocess.getstatusoutput('xdg-open ' + DEFAULT_RENDERING_IMAGE)
+        exitcode, output = subprocess.getstatusoutput('xdg-open ' + render_file_path_full)
         logging.info(output)
 
-    return DEFAULT_RENDERING_IMAGE
+    return render_file_path_full
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Picture to chocolate renderer')
