@@ -31,7 +31,7 @@ def grab_render():
 @app.route('/show-render', methods = ['GET'])
 def show_render():
     requested_file = secure_filename(request.args.get('requested_file'))
-    return render_template('show-render.html', render_filename=requested_file)
+    return render_template('show-render.html', render_filename=url_for('grab_render', requested_file=requested_file))
 
 def has_no_empty_params(rule):
     defaults = rule.defaults if rule.defaults is not None else ()

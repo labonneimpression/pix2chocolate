@@ -1,6 +1,7 @@
 from filecmp import cmp
 from io import BytesIO
 import os
+import re
 import tempfile
 import urllib.parse as parse
 
@@ -63,8 +64,10 @@ def test_file_upload(client):
             assert get_images_difference_percent(received_data_file.name, RENDER_FILE_TO_RECEIVE) < 20 
 
         # checking proper page template with render image tag
-        parsed_query = parse.parse_qs(parse.urlparse(redirected_url).query)
+        parsed_redirected_url = parse.urlparse(redirected_url)
+        path_and_query = '{}?{}'.format(parsed_redirected_url.path, parsed_redirected_url.query) 
+        parsed_query = parse.parse_qs(parsed_redirected_url.query)
         assert 'requested_file' in parsed_query
         requested_file = parsed_query['requested_file'][0]
         rv = client.get('/show-render?requested_file=' + requested_file)
-        assert ('renders/' + requested_file) in rv.data.decode('utf-8')
+        assert 'src="{}"'.format(path_and_query) in rv.data.decode('utf-8')
