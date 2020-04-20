@@ -28,5 +28,5 @@ jobs:
     - name: Upload image as artifact
       uses: actions/upload-artifact@v1
       with:
-        name: test0001.png
-        path: test0001.png
+        name: renders
+        path: webapp/renders
