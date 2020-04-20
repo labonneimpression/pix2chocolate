@@ -48,6 +48,7 @@ def test_file_upload(client):
                          data=data)
         uploaded_received_svg = os.path.join(DOWNLOADS_DIR, FILE_TO_SEND)
         # checking server-side stored file
+        print(os.path.realpath(os.getcwd()))
         print(os.listdir(DOWNLOADS_DIR))
         print(os.listdir(os.path.join(DOWNLOADS_DIR, '..')))
         assert cmp(FILE_TO_SEND, uploaded_received_svg)
