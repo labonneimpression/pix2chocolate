@@ -8,7 +8,6 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 4
       matrix:
         python-version: [3.7]
 
@@ -22,11 +21,12 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y blender
-    - name: Attempt render
+    - name: Attempt render through flask file upload form
       run: |
-        python pix2chocolate.py
+        pip install -r requirements.txt
+        python -m pytest tests/ -vvvv
     - name: Upload image as artifact
       uses: actions/upload-artifact@v1
       with:
-        name: your-chocolate.png
+        name: test0001.png
         path: test0001.png
