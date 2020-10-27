@@ -13,7 +13,7 @@ Run `sh pix2chocolate.sh` (will use the LaBonneImpression logo).
 Or provide an image of any time as first parameter: `sh pix2chocolate.sh smiley.png`.
 (You can also use `python3 pix2chocolate.py` the same way).
 
-## Example (Milestone 1)
+## Example (Milestone 1) - single chocolate biscuit
 1. Create a PNG heightmap (eg. greyscale image) by hand
 ![Image of Logo heightmap](https://github.com/labonneimpression/pix2chocolate/raw/master/LaBonneImpressionLogoHeightmapExample.png)
 1. Run the `pix2chocolate.sh LaBonneImpressionLogoHeightmap.svg` script and observe console output like
@@ -34,6 +34,32 @@ Blender quit
 1. Observe the resulting image named test0001.png
 
 ![Image of Logo chocolate](https://github.com/labonneimpression/pix2chocolate/raw/master/test0001.png)
+
+## Example 2 (out of roadmap) - multiple chocolate biscuits
+Using [cli_example_multiletters.py](cli_example_multiletters.py) with the virtual-environment packages of [requirements.txt](requirements.txt), you can generate `Happy birthday` chocolate biscuit renderings. That script makes use of the command-line `pix2chocolate` tool.
+
+See final result below:
+![chocolate biscuit letter](generated/letter0001.png)
+![chocolate biscuit letter](generated/letter0002.png)
+![chocolate biscuit letter](generated/letter0003.png)
+![chocolate biscuit letter](generated/letter0004.png)
+![chocolate biscuit letter](generated/letter0005.png)
+![chocolate biscuit letter](generated/letter0006.png)
+![chocolate biscuit letter](generated/letter0007.png)
+![chocolate biscuit letter](generated/letter0008.png)
+![chocolate biscuit letter](generated/letter0009.png)
+![chocolate biscuit letter](generated/letter0010.png)
+![chocolate biscuit letter](generated/letter0011.png)
+![chocolate biscuit letter](generated/letter0012.png)
+![chocolate biscuit letter](generated/letter0013.png)
+![chocolate biscuit letter](generated/letter0014.png)
+![chocolate biscuit letter](generated/letter0015.png)
+![chocolate biscuit letter](generated/letter0016.png)
+![chocolate biscuit letter](generated/letter0017.png)
+![chocolate biscuit letter](generated/letter0018.png)
+![chocolate biscuit letter](generated/letter0019.png)
+
+
 
 ## Milestones
 1. Drop heightmap SVG file in directory, run manually Blender rendering, show chocolate render offline
