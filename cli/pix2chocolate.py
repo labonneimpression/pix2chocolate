@@ -8,20 +8,23 @@ import logging
 import glob
 
 DEFAULT_INPUT_IMAGE = 'LaBonneImpressionLogoHeightmap.svg'
-DEFAULT_DISPLACEMENT_TEXTURE_IMAGE = 'LaBonneImpressionLogoHeightmap.png' #todo more generic filename
+DEFAULT_DISPLACEMENT_TEXTURE_IMAGE = 'LaBonneImpressionLogoHeightmap.png'
 DEFAULT_RENDERING_IMAGE = 'test0001.png'
 OUTPUT_IMAGE_PREFIX = 'test'
 PREVIEW_AFTER = True
 
 def pix2chocolate(DEFAULT_INPUT_IMAGE=DEFAULT_INPUT_IMAGE, DEFAULT_DISPLACEMENT_TEXTURE_IMAGE=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE, DEFAULT_RENDERING_IMAGE=DEFAULT_RENDERING_IMAGE, OUTPUT_IMAGE_PREFIX=OUTPUT_IMAGE_PREFIX, POST_RENDER_ROTATE=False, PREVIEW_AFTER=PREVIEW_AFTER):
-    if shutil.which("convert"):
-        print("convert...")
-        command_to_run = 'convert -rotate "90>" -background "#000000" -density 900 {input_file} {output_file}'.format(input_file=DEFAULT_INPUT_IMAGE, output_file=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE)
+    if shutil.which("inkscape"):
+        print("inkscape...")
+        command_to_run = 'inkscape {input_file} -d 200 -C -b "#000000" -y 1.0 -o {output_file}'.format(input_file=DEFAULT_INPUT_IMAGE, output_file=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE)
+        #command_to_run = 'inkscape {input_file} --actions="select-all;transform-rotate:90" -C -b "#000000" -y 1.0 -o {output_file}'.format(input_file=DEFAULT_INPUT_IMAGE, output_file=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE)
+        #command_to_run = 'convert -rotate "90>" -background "#000000" -density 900 {input_file} {output_file}'.format(input_file=DEFAULT_INPUT_IMAGE, output_file=DEFAULT_DISPLACEMENT_TEXTURE_IMAGE)
         print(command_to_run)
         exitcode, output = subprocess.getstatusoutput(command_to_run)
         logging.info(output)
     else:
-        print('No prior use of ImageMagick''s convert: process not found in path.')
+        print('Inkscape not found, install it first!.')
+        sys.exit(1)
     
     if shutil.which("blender"):
         exitcode, output = subprocess.getstatusoutput(

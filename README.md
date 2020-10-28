@@ -36,7 +36,7 @@ Blender quit
 ![Image of Logo chocolate](https://github.com/labonneimpression/pix2chocolate/raw/master/test0001.png)
 
 ## Example 2 (out of roadmap) - multiple chocolate biscuits
-Using [cli_example_multiletters.py](cli_example_multiletters.py) with the virtual-environment packages of [requirements.txt](requirements.txt), you can generate `Happy birthday` chocolate biscuit renderings. That script makes use of the command-line `pix2chocolate` tool.
+Using [cli_example_multiletters.py](cli_example_multiletters.py) with the virtual-environment packages of [requirements.txt](requirements.txt), you can generate `Happy Birthday!` chocolate biscuit renderings. That script makes use of the command-line `pix2chocolate` tool.
 
 See final result below:
 ![chocolate biscuit letter](generated/letter0001.png)
@@ -54,10 +54,6 @@ See final result below:
 ![chocolate biscuit letter](generated/letter0013.png)
 ![chocolate biscuit letter](generated/letter0014.png)
 ![chocolate biscuit letter](generated/letter0015.png)
-![chocolate biscuit letter](generated/letter0016.png)
-![chocolate biscuit letter](generated/letter0017.png)
-![chocolate biscuit letter](generated/letter0018.png)
-![chocolate biscuit letter](generated/letter0019.png)
 
 
 

@@ -20,7 +20,7 @@ jobs:
     - name: Install blender 2.79
       run: |
         sudo apt-get update
-        sudo apt-get install -y blender
+        sudo apt-get install -y blender inkscape
     - name: Attempt render through flask file upload form
       run: |
         pip install -r requirements.txt
