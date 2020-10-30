@@ -35,7 +35,7 @@ Blender quit
 
 ![Image of Logo chocolate](https://github.com/labonneimpression/pix2chocolate/raw/master/test0001.png)
 
-## Example 2 (out of roadmap) - multiple chocolate biscuits
+## Example 2 (out of roadmap) - multiple letter chocolate biscuits
 Using [cli_example_multiletters.py](cli_example_multiletters.py) with the virtual-environment packages of [requirements.txt](requirements.txt), you can generate `Happy Birthday!` chocolate biscuit renderings. That script makes use of the command-line `pix2chocolate` tool.
 
 See final result below:
@@ -54,6 +54,22 @@ See final result below:
 ![chocolate biscuit letter](generated/letter0013.png)
 ![chocolate biscuit letter](generated/letter0014.png)
 ![chocolate biscuit letter](generated/letter0015.png)
+
+## Example 3 - multiple letter chocolate biscuits 
+This example uses the G'MIC Python binding for post-processing the biscuit result with an engrave filter.
+
+Usage:
+```sh
+python cli_example_multiletters.py --text="abc" --output-dir="alphabet" --gmic_command="fx_engrave 0.5,50,0,8,40,0,0,0,10,1,0,0,0,1,0"
+```
+
+See final result:
+![chocolate biscuit letter](alphabet/letter0001.png)
+![chocolate biscuit letter](alphabet/letter0002.png)
+![chocolate biscuit letter](alphabet/letter0003.png)
+![chocolate biscuit letter engraved](alphabet/letter_gmic0001.png)
+![chocolate biscuit letter engraved](alphabet/letter_gmic0002.png)
+![chocolate biscuit letter engraved](alphabet/letter_gmic0003.png)
 
 
 

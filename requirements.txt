@@ -1,3 +1,5 @@
+gmic
 flask
 pytest
 Pillow
+fire
