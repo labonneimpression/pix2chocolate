@@ -1,0 +1,33 @@
+name: Pix2chocolate GPU-less Blender Cycles render test
+
+on:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install blender 2.79, Inkscape, Potrace
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y blender inkscape potrace
+    - name: Run alphabet script
+      run: |
+        pip install -r requirements.txt
+        rm generated/*
+        python cli_example_multiletters.py
+    - name: Upload alphabet images as artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: alphabet font directory
+        path: generated/
