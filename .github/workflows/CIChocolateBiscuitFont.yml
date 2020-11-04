@@ -1,10 +1,10 @@
-name: Pix2chocolate GPU-less Blender Cycles render test
+name: Pix2chocolate Chocolate Biscuit Font Generation
 
 on:
   push:
 
 jobs:
-  build:
+  build-font:
 
     runs-on: ubuntu-latest
     strategy:

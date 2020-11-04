@@ -1,10 +1,10 @@
-name: Pix2chocolate GPU-less Blender Cycles render test
+name: Pix2chocolate GPU-less Blender Cycles webapp test
 
 on:
   push:
 
 jobs:
-  build:
+  build-webapp:
 
     runs-on: ubuntu-latest
     strategy:
