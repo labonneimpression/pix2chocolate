@@ -9,7 +9,8 @@ OUTPUTPNG=LaBonneImpressionLogoHeightmap.png
 
 
 # Use ImageMagick's convert if exists, auto-rotate if width is larger than height
-command -v convert && time convert -rotate "90>" -background "#000000" -density 900 "$INPUTSVG" "$OUTPUTPNG"
+#command -v convert && time convert -rotate "90>" -background "#000000" -density 900 "$INPUTSVG" "$OUTPUTPNG"
+inkscape "$INPUTSVG" -d 200 -C -b "#000000" -y 1.0 -o "$OUTPUTPNG"
 
 # Run blender rendering
 time blender -b micro_displacement_test.blend -x 1 -o test -f 1
